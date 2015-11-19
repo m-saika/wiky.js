@@ -192,13 +192,22 @@ wiky.process_url = function(txt) {
 	var index = txt.indexOf(" "),
         url = txt,
         label = txt,
+		target = '',
         css = ' style="background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC\") no-repeat scroll right center transparent;padding-right: 13px;"';
 	
 	if (index !== -1) {
 		url = txt.substring(0, index);
 		label = txt.substring(index + 1);
 	}
-	return '<a href="' + url + '"' + (wiky.options['link-image'] ? css : '') + '>' + label + '</a>';
+	var target_start = url.indexOf('(');
+	if (target_start !== -1) {
+		var target_end = url.indexOf(')', target_start + 1);
+		target = url.substring(target_start + 1);
+		url = url.substring(0, target_start);
+		if (index === -1) {
+			label = url;
+		}
+	}	return '<a href="' + url + '"' + (wiky.options['link-image'] ? css : '') + (target ? ' target="' + target + '"' : '') + '>' + label + '</a>';
 };
 
 wiky.process_image = function(txt) {

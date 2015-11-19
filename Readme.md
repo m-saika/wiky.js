@@ -21,6 +21,7 @@ Supported Syntax
 * == Heading ==
 * === Subheading ===
 * [http://www.url.com Name of URLs]
+* [http://www.url.com(target) Name of URLs]
 * [[File:http://www.url.com/image.png Alternative Text]]
 * -------------------- (Horizontal line)
 * : (Indentation)
