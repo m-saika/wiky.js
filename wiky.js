@@ -266,7 +266,7 @@ wiky.process_normal = function(wikitext) {
 	
 	
 	// URL
-	var protocols = ["http","ftp","news"];
+	var protocols = ["http","ftp","news","https"];
 	
 	for (var i=0;i<protocols.length;i++)
 	{
